@@ -39,7 +39,7 @@ class ItemService {
                 picture: item.data.thumbnail,
                 condition: item.data.condition,
                 free_shiping: item.shipping.free_shiping,
-                sold_quantity: '',
+                sold_quantity: '', // To-do: Ver de donde sacar la sold_quantity
                 description: description.data.plain_text
             }
         }
