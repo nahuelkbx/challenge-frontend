@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.logo-container{
+    background-color: #EEEEEE;
+    width: 40px;
+
+    img{
+        height: 1.2rem;
+        padding: 0.5rem;
+    }
+    
+}
+
+.search {
+    padding: 0.5rem;
+    border: none;
+}
