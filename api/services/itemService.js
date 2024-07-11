@@ -1,28 +1,29 @@
 const axios = require('axios')
-const {getCategories, limitItems} = require('../utils/utils')
+
+const MELI_HOST = process.env.MELI_HOST
 
 class ItemService {
     static async Get(req) {
-        let items = await axios.get(`${process.env.MELI_HOST}/sites/MLA/search?q=${req.query.search}`)
+        let items = await axios.get(`${MELI_HOST}/sites/MLA/search?q=${req.query.search}`)
 
         const response = {
             author: {
-                name: 'Nahuel', 
+                name: 'Nahuel',
                 lastname: 'Monserrat'
             },
-            categories: getCategories(items.data.filters),
-            items: limitItems(items.data.results, 4),
+            categories: this.getCategories(items.data.filters),
+            items: this.limitItems(items.data.results, 4),
         }
 
         return response
     }
 
-    static async GetDetail(req){
+    static async GetDetail(req) {
         const [item, description] = await Promise.all([
-            axios.get(`${process.env.MELI_HOST}/items/${req.params.id}`),
-            axios.get(`${process.env.MELI_HOST}/items/${req.params.id}/description`)
+            axios.get(`${MELI_HOST}/items/${req.params.id}`),
+            axios.get(`${MELI_HOST}/items/${req.params.id}/description`)
         ])
-        
+
         return {
             author: {
                 name: 'Nahuel',
@@ -44,6 +45,32 @@ class ItemService {
             }
         }
     }
+
+    static getCategories(filters) {
+        let categories = filters.find((filter) => filter.id === 'category')
+
+        let response = categories.values[0].path_from_root.map((category) => {
+
+            return {
+                category: categories.values[0].name,
+                path: category.name
+            }
+        })
+
+        return response
+    }
+
+    static limitItems(items, limit) {
+        let response = []
+        items.forEach((item, index) => {
+            if (index < limit) {
+                response.push(item)
+            }
+        })
+
+        return response
+    }
+
 }
 
 module.exports = ItemService
