@@ -1,4 +1,4 @@
-const ItemService = require('../services/itemService')
+const ItemService = require('../services/item_service')
 
 class ControllerItem {
     static async Get(req, res) {
