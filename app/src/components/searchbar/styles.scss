@@ -11,7 +11,7 @@ $meli-secondary: #EEEEEE;
     cursor: pointer;
 
     img{
-        padding: 0.5rem;
+        padding: 0.43rem;
     }
     
 }
@@ -19,7 +19,8 @@ $meli-secondary: #EEEEEE;
 .search {
     width: 40rem;
     padding: 0.7rem;
-    border-radius: 4px;
+    border-top-left-radius: 3px; /* Radio de borde superior izquierdo */
+    border-bottom-left-radius: 3px; /* Radio de borde inferior izquierdo */
     border: $meli-secondary;
 }
 
