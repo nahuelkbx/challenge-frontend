@@ -30,13 +30,16 @@ export default function Searchbar() {
   return (
     <header className='searchbar-container'>
 
+      <form 
+      onSubmit={(e)=> handleSearch()}  
+      onKeyPress={(e) => {handleKeyPress(e)}}>
       <input 
       className='search' 
       type='text' 
       placeholder='Nunca dejes de buscar' 
       onChange={(e) => { handleOnChange(e) }} 
-      onKeyPress={(e) => {handleKeyPress(e)}}
       />
+      </form>
 
       <div className='logo-container' onClick={() => { handleSearch() }}>
         <img src={search} alt='searchLogo' />
