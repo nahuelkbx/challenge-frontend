@@ -4,7 +4,7 @@ const MELI_HOST = process.env.MELI_HOST
 
 class ItemService {
     static async Get(req) {
-        let items = await axios.get(`${MELI_HOST}/sites/MLA/search?q=${req.query.search}`)
+        let items = await axios.get(`${MELI_HOST}/sites/MLA/search?q=${req.query.q}`)
 
         const response = {
             author: {
