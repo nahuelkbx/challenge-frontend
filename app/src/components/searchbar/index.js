@@ -9,8 +9,11 @@ export default function Searchbar() {
   const [query, setQuery] = useState("")
   const navigate = useNavigate()
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault()
     if (query === '') return
+
+    console.log(query)
 
     navigate(`/items?search=${query}`)
 
@@ -18,7 +21,7 @@ export default function Searchbar() {
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      handleSearch();
+      handleSearch(e);
     }
   };
 
@@ -31,7 +34,7 @@ export default function Searchbar() {
     <header className='searchbar-container'>
 
       <form 
-      onSubmit={(e)=> handleSearch()}  
+      onSubmit={(e)=> handleSearch(e)}  
       onKeyPress={(e) => {handleKeyPress(e)}}>
       <input 
       className='search' 
@@ -41,7 +44,7 @@ export default function Searchbar() {
       />
       </form>
 
-      <div className='logo-container' onClick={() => { handleSearch() }}>
+      <div className='logo-container' onClick={(e) => { handleSearch(e) }}>
         <img src={search} alt='searchLogo' />
       </div>
     </header>
