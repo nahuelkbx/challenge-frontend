@@ -1,0 +1,11 @@
+$base-meli: #FFE600;
+
+
+.nav-container{
+    display: flex;
+    background-color: $base-meli;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 7vh;
+}
