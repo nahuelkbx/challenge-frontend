@@ -68,13 +68,13 @@ class ItemService {
                     id: element.id,
                     title: element.title,
                     price: {
-                        currency: element.currency,
+                        currency: element.currency_id,
                         amount: element.price,
-                        decimals: element.base_price
+                        decimals: element.installments.amount
                     },
                     picture: element.thumbnail,
                     condition: element.condition,
-                    free_shiping: element.shipping.free_shiping
+                    free_shipping: element.shipping.free_shipping
                 }
 
                 response.push(item)
