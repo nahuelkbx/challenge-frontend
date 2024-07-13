@@ -33,17 +33,29 @@ class ItemService {
                 id: item.data.id,
                 title: item.data.title,
                 price: {
-                    currency: item.data.currency,
+                    currency: item.data.currency_id,
                     amount: item.data.price,
-                    decimals: item.data.base_price
+                    decimals: this.getDecimals(item.data.price)
                 },
                 picture: item.data.thumbnail,
                 condition: item.data.condition,
-                free_shiping: item.shipping.free_shiping,
-                sold_quantity: '', // To-do: Ver de donde sacar la sold_quantity
+                free_shipping: item.data.shipping.free_shipping,
+                sold_quantity: '',
                 description: description.data.plain_text
             }
         }
+    }
+
+    static getDecimals(number){
+        let transform = number.toString();
+
+        let decimalIndex = transform.indexOf('.')
+
+        if (decimalIndex === -1){
+            return ""
+        }
+
+        return transform.substring(decimalIndex)
     }
 
     static getCategories(filters) {
