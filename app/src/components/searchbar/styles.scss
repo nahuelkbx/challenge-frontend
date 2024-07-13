@@ -7,20 +7,20 @@ $meli-secondary: #EEEEEE;
 
 .logo-container{
     background-color: $meli-secondary;
-    border-radius: 2px;
     cursor: pointer;
-
-    img{
-        padding: 0.43rem;
-    }
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
     
 }
 
 .search {
     width: 40rem;
     padding: 0.7rem;
-    border-top-left-radius: 3px; /* Radio de borde superior izquierdo */
-    border-bottom-left-radius: 3px; /* Radio de borde inferior izquierdo */
+    border-top-left-radius: 3px; 
+    border-bottom-left-radius: 3px; 
     border: $meli-secondary;
 }
 
