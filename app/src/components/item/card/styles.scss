@@ -1,0 +1,59 @@
+$border: #EEEEEE;
+
+.card-container{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+.picture-container {
+    padding: 1rem;
+
+    img {
+        height: 11.25rem;
+        width: 11.25rem;
+        border-radius: 4px;
+    }
+}
+
+.information-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+
+    
+
+    .price {
+        font-size: 1.5rem;
+    }
+
+    .title {
+        font-size: 1.125rem;
+    }
+
+    .shipping-container {
+        text-align: center;
+    }
+
+    div {
+        display: flex;
+    }
+
+    div > *{
+        margin: 0.3rem;
+    }
+}
+
+.border {
+    margin: auto;
+    width: 85%;
+    border-bottom: $border 1px solid;
+
+    &:last-child{
+        border: none;
+    }
+}
+

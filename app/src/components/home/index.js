@@ -3,7 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios'
 
+import './styles.scss'
+
 import Cards from '../item/all/index'
+import Path from '../path/index'
 
 
 
@@ -28,9 +31,9 @@ function Home() {
                 categories: response.data.categories
             })
         })
-        .catch((error)=> {
-            console.log(error)
-        })
+            .catch((error) => {
+                console.log(error)
+            })
 
     }
 
@@ -43,11 +46,16 @@ function Home() {
 
 
     return (
-        <div id='home'>
-            {state.items.length && 
-                <Cards items={state.items}/>
+        <>
+        <div id='home' className='home-container'>
+            {state.categories.length &&
+                <Path categories={state.categories} />
+            }
+            {state.items.length &&
+                <Cards items={state.items} />
             }
         </div>
+        </>
     )
 }
 

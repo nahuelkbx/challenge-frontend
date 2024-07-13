@@ -1,10 +1,14 @@
 import React from 'react'
 
+import './styles.scss'
+
 import Card from '../card'
+
+
 
 function Cards({items}) {
   return (
-    <div>
+    <div className='cards-container'>
       {items && items.map((item)=> {
         return (
           <Card
