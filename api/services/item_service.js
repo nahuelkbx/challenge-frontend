@@ -62,8 +62,21 @@ class ItemService {
 
     static limitItems(items, limit) {
         let response = []
-        items.forEach((item, index) => {
+        items.forEach((element, index) => {
             if (index < limit) {
+                let item = {
+                    id: element.id,
+                    title: element.title,
+                    price: {
+                        currency: element.currency,
+                        amount: element.price,
+                        decimals: element.base_price
+                    },
+                    picture: element.thumbnail,
+                    condition: element.condition,
+                    free_shiping: element.shipping.free_shiping
+                }
+
                 response.push(item)
             }
         })
