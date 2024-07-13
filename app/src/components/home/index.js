@@ -11,7 +11,7 @@ import Path from '../path/index'
 
 
 function Home() {
-    const [searchParams, _setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const [state, setState] = useState({
         items: [],
         categories: []
@@ -32,7 +32,7 @@ function Home() {
             })
         })
             .catch((error) => {
-                console.log(error)
+                return error
             })
 
     }
@@ -42,16 +42,18 @@ function Home() {
             getItems(query)
         }
 
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query])
 
 
     return (
         <>
         <div id='home' className='home-container'>
-            {state.categories.length &&
+            {state.categories &&
                 <Path categories={state.categories} />
             }
-            {state.items.length &&
+            {state.items &&
                 <Cards items={state.items} />
             }
         </div>

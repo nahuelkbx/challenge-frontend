@@ -22,7 +22,10 @@ const router = createBrowserRouter([
       }
     ]
   },
-  
+  {
+    path: "/items/:item_id",
+    element: <></>
+  }
 
 ]);
 

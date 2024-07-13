@@ -13,8 +13,6 @@ export default function Searchbar() {
     e.preventDefault()
     if (query === '') return
 
-    console.log(query)
-
     navigate(`/items?search=${query}`)
 
   }
