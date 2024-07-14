@@ -32,6 +32,7 @@ export default function Searchbar() {
     <header className='searchbar-container'>
 
       <form 
+      className='form'
       onSubmit={(e)=> handleSearch(e)}  
       onKeyPress={(e) => {handleKeyPress(e)}}>
       <input 

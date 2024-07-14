@@ -3,27 +3,30 @@
 .searchbar-container {
     display: flex;
     padding: 1rem;
+    width: 58vw;
 }
 
-.logo-container{
+.logo-container {
     background-color: $meli-white;
     cursor: pointer;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    
+
+    img {
+        padding: 0.5rem;
+    }
 }
 
-.search {
-    width: 53rem;
-    padding: 0.7rem;
-    border-top-left-radius: 3px; 
-    border-bottom-left-radius: 3px; 
-    border: $meli-black;
-}
+.form {
+    width: 100%;
 
-.search:focus{
-    outline: none;
+    .search {
+        padding: 0.7rem;
+        width: 100%;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border: $meli-black;
+    }
+
+    .search:focus {
+        outline: none;
+    }
 }
