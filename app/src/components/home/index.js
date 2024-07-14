@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
 import { useSearchParams } from 'react-router-dom';
-import axios from 'axios'
 
 import './styles.scss'
 
 import Cards from '../item/all/index'
 import Path from '../path/index'
+import {getItems} from '../../services/item'
 
 
 
@@ -19,31 +19,20 @@ function Home() {
 
     const query = searchParams.get('search' || "")
 
-    const BACKEND_HOST = process.env.REACT_APP_API_URL;
-
-
-
-    const getItems = (query) => {
-        axios.get(`${BACKEND_HOST}/api/items?q=${query}`).then((response) => {
-            setState({
-                ...state,
-                items: response.data.items,
-                categories: response.data.categories
-            })
-        })
-            .catch((error) => {
-                return error
-            })
-
-    }
-
     useEffect(() => {
         if (query !== '') {
-            getItems(query)
+            getItems(query).then((response)=> {
+                setState({
+                    ...state,
+                    items: response.items,
+                    categories: response.categories
+                })
+            }).catch((err)=> {
+                console.error(err)
+            })
+
+           
         }
-
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query])
 
 
