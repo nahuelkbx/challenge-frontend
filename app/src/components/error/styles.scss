@@ -1,0 +1,18 @@
+@import '../../styles.scss';
+
+.error-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+
+    h1{
+        color: $meli-gray;
+    }
+
+    label{
+        color: red;
+        font-size: x-small;
+    }
+}
