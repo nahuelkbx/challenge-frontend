@@ -2,7 +2,7 @@ import React from 'react'
 
 import './styles.scss'
 
-import shipping from '../../../specs/ic_shipping.png'
+import shipping from '../../../specs/ic_shipping@2x.png'
 
 import { Link } from 'react-router-dom'
 
@@ -16,7 +16,7 @@ function Card({ id, title, price, picture, free_shipping }) {
     <>
       <Link
         className='card-link'
-        to={{ pathname: `/items/${id}`, categories: ['Hola'] }}
+        to={{ pathname: `/items/${id}` }}
         key={id}
       >
         <div className='card-container'>
@@ -26,7 +26,7 @@ function Card({ id, title, price, picture, free_shipping }) {
           </div>
 
           <div className='information-container'>
-            <div>
+            <div className='information'>
               <label className='price'>$ {price.amount}</label>
               {free_shipping ?
                 <div className='shipping-container'>
@@ -43,7 +43,6 @@ function Card({ id, title, price, picture, free_shipping }) {
 
 
         </div>
-        <div className='border'></div>
       </Link>
     </>
 
