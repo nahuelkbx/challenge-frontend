@@ -4,11 +4,13 @@ import { useParams } from 'react-router-dom';
 
 import './styles.scss'
 
+import  Loading  from '../../loading/index'
 import formatPrice from '../../../utils/index'
 import { getDetail } from '../../../services/item'
 
 
 function Detail() {
+    const [isLoading, setIsLoading] = useState(false)
     const [state, setState] = useState({
         title: "",
         condition: "",
@@ -30,6 +32,7 @@ function Detail() {
     useEffect(() => {
 
         if (id !== '') {
+            setIsLoading(true)
             getDetail(id).then((response) => {
                 setState({
                     ...state,
@@ -44,6 +47,10 @@ function Detail() {
                         decimals: response.detail.price.decimals
                     }
                 })
+                setIsLoading(false)
+            }).catch((error) => {
+                console.error(error)
+                setIsLoading(false)
             })
         }
 
@@ -60,33 +67,40 @@ function Detail() {
     }
 
     return (
-        <div className='main'>
-            {state &&
-                <div className='container'>
+        <>
+            {isLoading ?
+                <Loading />
+                :
+                <div className='main'>
+                    {state &&
+                        <div className='container'>
 
-                    <div className='information'>
-                        <div className='thumbnail-container'>
-                            <img alt='thumbnail' src={state.picture} />
+                            <div className='information'>
+                                <div className='thumbnail-container'>
+                                    <img alt='thumbnail' src={state.picture} />
+                                </div>
+
+                                <div className='description'>
+                                    <label className='title'>Descripción del producto</label>
+                                    <p className='paragraph'>{state.description}</p>
+                                </div>
+
+                            </div>
+
+                            <div className='detail'>
+                                <label className='condition'>{toggleCondition(state.condition)}</label>
+                                <label className='title'>{state.title}</label>
+                                <label className='price'>{formatPrice(state.price.amount, state.price.currency || 'ARS', 'es-AR')}</label>
+                                <button className='buy'>Comprar</button>
+                            </div>
+
                         </div>
-
-                        <div className='description'>
-                            <label className='title'>Descripción del producto</label>
-                            <p className='paragraph'>{state.description}</p>
-                        </div>
-
-                    </div>
-
-                    <div className='detail'>
-                        <label className='condition'>{toggleCondition(state.condition)}</label>
-                        <label className='title'>{state.title}</label>
-                        <label className='price'>{formatPrice(state.price.amount, state.price.currency || 'ARS', 'es-AR')}</label>
-                        <button className='buy'>Comprar</button>
-                    </div>
+                    }
 
                 </div>
             }
 
-        </div>
+        </>
     )
 }
 

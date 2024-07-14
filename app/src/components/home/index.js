@@ -6,12 +6,14 @@ import './styles.scss'
 
 import Cards from '../item/all/index'
 import Path from '../path/index'
-import {getItems} from '../../services/item'
+import Loading from '../loading';
+import { getItems } from '../../services/item'
 
 
 
 function Home() {
     const [searchParams] = useSearchParams();
+    const [isLoading, setIsLoading] = useState(false)
     const [state, setState] = useState({
         items: [],
         categories: []
@@ -21,31 +23,39 @@ function Home() {
 
     useEffect(() => {
         if (query !== '') {
-            getItems(query).then((response)=> {
+            setIsLoading(true)
+            getItems(query).then((response) => {
                 setState({
                     ...state,
                     items: response.items,
                     categories: response.categories
                 })
-            }).catch((err)=> {
+                setIsLoading(false)
+            }).catch((err) => {
                 console.error(err)
+                setIsLoading(false)
             })
 
-           
+
         }
     }, [query])
 
 
     return (
         <>
-        <div id='home' className='home-container'>
-            {state.categories &&
-                <Path categories={state.categories} />
+            {isLoading ?
+                <Loading />
+                :
+                <div id='home' className='home-container'>
+                    {state.categories &&
+                        <Path categories={state.categories} />
+                    }
+                    {state.items &&
+                        <Cards items={state.items} />
+                    }
+                </div>
             }
-            {state.items &&
-                <Cards items={state.items} />
-            }
-        </div>
+
         </>
     )
 }

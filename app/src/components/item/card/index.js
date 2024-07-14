@@ -13,9 +13,6 @@ import shipping from '../../../specs/ic_shipping@2x.png'
 
 function Card({ id, title, price, picture, free_shipping }) {
   
-  console.log()
-
-
   return (
     <>
       <Link
