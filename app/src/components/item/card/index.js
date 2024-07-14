@@ -29,7 +29,9 @@ function Card({ id, title, price, picture, free_shipping }) {
             <div>
               <label className='price'>$ {price.amount}</label>
               {free_shipping ?
-                <div className='shipping-container'><img src={shipping} className='shipping' alt='shippingLogo' /></div>
+                <div className='shipping-container'>
+                  <img src={shipping} className='shipping' alt='shippingLogo' />
+                </div>
                 :
                 <></>
               }
@@ -42,10 +44,10 @@ function Card({ id, title, price, picture, free_shipping }) {
 
         </div>
         <div className='border'></div>
-        </Link>
-      </>
+      </Link>
+    </>
 
-      )
+  )
 }
 
-      export default Card
+export default Card

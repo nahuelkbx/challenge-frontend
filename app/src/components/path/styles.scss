@@ -1,12 +1,11 @@
-$text-color: #999999;
-$text-bold: #666666;
+@import '../../styles.scss';
 
 
 .path-container{
-    width: 45%;
+    width: 58%;
     display: flex;
     flex-wrap: wrap;
-    color: $text-color;
+    color: $meli-light-gray;
     padding: 1rem;
 }
 
@@ -18,7 +17,7 @@ $text-bold: #666666;
     }
 
     &:last-child{
-        color: $text-bold ;
+        color: $meli-gray ;
         font-weight: 600;
     }
 }

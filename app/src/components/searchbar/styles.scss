@@ -1,4 +1,4 @@
-$meli-secondary: #EEEEEE;
+@import '../../styles.scss';
 
 .searchbar-container {
     display: flex;
@@ -6,7 +6,7 @@ $meli-secondary: #EEEEEE;
 }
 
 .logo-container{
-    background-color: $meli-secondary;
+    background-color: $meli-white;
     cursor: pointer;
     text-align: center;
     display: flex;
@@ -21,7 +21,7 @@ $meli-secondary: #EEEEEE;
     padding: 0.7rem;
     border-top-left-radius: 3px; 
     border-bottom-left-radius: 3px; 
-    border: $meli-secondary;
+    border: $meli-black;
 }
 
 .search:focus{
