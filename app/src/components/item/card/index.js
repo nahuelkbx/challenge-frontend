@@ -4,13 +4,21 @@ import './styles.scss'
 
 import shipping from '../../../specs/ic_shipping.png'
 
+import { Link } from 'react-router-dom'
 
 
-function Card({ id, title, price, picture, condition, free_shipping }) {
+
+
+function Card({ id, title, price, picture, free_shipping }) {
 
 
   return (
     <>
+      <Link
+        className='card-link'
+        to={{ pathname: `/items/${id}`, categories: ['Hola'] }}
+        key={id}
+      >
         <div className='card-container'>
 
           <div className='picture-container'>
@@ -21,7 +29,7 @@ function Card({ id, title, price, picture, condition, free_shipping }) {
             <div>
               <label className='price'>$ {price.amount}</label>
               {free_shipping ?
-                <div className='shipping-container'><img src={shipping} className='shipping' /></div>
+                <div className='shipping-container'><img src={shipping} className='shipping' alt='shippingLogo' /></div>
                 :
                 <></>
               }
@@ -34,9 +42,10 @@ function Card({ id, title, price, picture, condition, free_shipping }) {
 
         </div>
         <div className='border'></div>
-    </>
+        </Link>
+      </>
 
-  )
+      )
 }
 
-export default Card
+      export default Card

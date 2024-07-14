@@ -47,13 +47,17 @@ $border: #EEEEEE;
     }
 }
 
+
+.card-link{
+    text-decoration: none;
+    color: #333333;
+}
+
 .border {
     margin: auto;
     width: 85%;
     border-bottom: $border 1px solid;
 
-    &:last-child{
-        border: none;
-    }
+
 }
 

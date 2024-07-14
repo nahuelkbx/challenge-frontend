@@ -1,0 +1,87 @@
+$meli-black: #333333;
+
+$meli-light-gray: #999999;
+$meli-gray: #666666;
+$meli-background: #EEEEEE;
+$meli-blue: #3483FA;
+
+
+.main {
+    background-color: $meli-background;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.container {
+    background-color: white;
+    display: flex;
+    width: 50vw;
+    height: 85vh;
+    padding: 2rem;
+    border-radius: 4px;
+
+    .information {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+
+        .thumbnail-container {
+            width: 100%;
+            text-align: center;
+
+            img {
+                height: 100%;
+                width: 50%;
+            }
+        }
+
+        .description {
+            padding: 2rem;
+
+            .title {
+                color: $meli-black;
+                font-size: 28px;
+                font-weight: 400;
+            }
+
+            .paragraph {
+                font-size: 16px;
+                color: $meli-gray;
+            }
+        }
+    }
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+
+    .condition {
+        font-size: 14px;
+        margin-bottom: 1rem;
+        color: $meli-black;
+    }
+
+    .price {
+        font-size: 46px;
+        padding: 2rem 0 2rem 0;
+    }
+
+    .title {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .buy {
+        border-radius: 4px;
+        border: none;
+        height: 2.5rem;
+        background-color: $meli-blue;
+        color: white;
+        width: 80%;
+        cursor: pointer;
+    }
+}
