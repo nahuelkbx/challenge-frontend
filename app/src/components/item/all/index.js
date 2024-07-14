@@ -12,20 +12,19 @@ function Cards({ items }) {
     <>
       {items &&
         <div className='cards-container'>
-          {items.map((item) => {
+          {items.map((item, i) => {
             return (
-              <>
+              <div key={item.id} className={`card-wrapper ${i === items.length - 1 ? 'last-card' : ''}`}>
                 <Card
                   id={item.id}
-                  key={item.id}
                   title={item.title}
                   price={item.price}
                   picture={item.picture}
                   condition={item.condition}
                   free_shipping={item.free_shipping}
                 />
-                <div className='border'></div>
-              </>
+                <div className='border'/>
+              </div>
             )
           })}
         </div>

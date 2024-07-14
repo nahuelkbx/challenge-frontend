@@ -9,18 +9,18 @@ $meli-blue: #3483FA;
 .main {
     background-color: $meli-background;
     display: flex;
-    align-items: center;
     justify-content: center;
     padding: 3rem;
+    height: 100vh;
 }
 
 .container {
     background-color: white;
     display: flex;
     width: 50vw;
-    height: 85vh;
     padding: 2rem;
     border-radius: 4px;
+    height: fit-content;
 
     .information {
         display: flex;
@@ -38,7 +38,21 @@ $meli-blue: #3483FA;
         }
 
         .description {
-            padding: 2rem;
+            padding: 2rem 0 2rem 0;
+            max-height: 12rem;
+            overflow: hidden;
+            position: relative;
+
+        .paragraph::after{
+            content: "mostrar mas";
+            color: $meli-blue;
+            position: absolute;
+            bottom: 0.2rem;
+            right: 0;
+            padding-left: 40px;
+            background: linear-gradient(to right, transparent, white 20%);
+            cursor: pointer;
+        }
 
             .title {
                 color: $meli-black;

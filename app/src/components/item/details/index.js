@@ -4,6 +4,8 @@ import './styles.scss'
 
 import axios from 'axios'
 
+import formatPrice from '../../../utils/index'
+
 import { useParams } from 'react-router-dom';
 
 function Detail() {
@@ -86,7 +88,7 @@ function Detail() {
                         <div className='detail'>
                             <label className='condition'>{toggleCondition(state.condition)}</label>
                             <label className='title'>{state.title}</label>
-                            <label className='price'>$ {state.price.amount}</label>
+                            <label className='price'>{formatPrice(state.price.amount, state.price.currency || 'ARS', 'es-AR')}</label>
                             <button className='buy'>Comprar</button>
                         </div>
 

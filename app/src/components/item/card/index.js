@@ -2,14 +2,18 @@ import React from 'react'
 
 import './styles.scss'
 
+import { Link } from 'react-router-dom'
+
+import formatPrice from '../../../utils/index'
 import shipping from '../../../specs/ic_shipping@2x.png'
 
-import { Link } from 'react-router-dom'
 
 
 
 
 function Card({ id, title, price, picture, free_shipping }) {
+  
+  console.log()
 
 
   return (
@@ -27,7 +31,7 @@ function Card({ id, title, price, picture, free_shipping }) {
 
           <div className='information-container'>
             <div className='information'>
-              <label className='price'>$ {price.amount}</label>
+              <label className='price'> {formatPrice(price.amount, price.currency, 'es-AR')}</label>
               {free_shipping ?
                 <div className='shipping-container'>
                   <img src={shipping} className='shipping' alt='shippingLogo' />
