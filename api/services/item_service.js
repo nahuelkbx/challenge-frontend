@@ -24,6 +24,7 @@ class ItemService {
             axios.get(`${MELI_HOST}/items/${req.params.id}/description`)
         ])
 
+
         return {
             author: {
                 name: 'Nahuel',
@@ -37,7 +38,7 @@ class ItemService {
                     amount: item.data.price,
                     decimals: this.getDecimals(item.data.price)
                 },
-                picture: item.data.thumbnail,
+                picture: item.data.pictures[0].url,
                 condition: item.data.condition,
                 free_shipping: item.data.shipping.free_shipping,
                 sold_quantity: '',
