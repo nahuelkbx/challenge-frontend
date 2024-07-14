@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 
 import { useSearchParams } from 'react-router-dom';
 
@@ -13,49 +13,48 @@ import { getItems } from '../../services/item'
 
 function Home() {
     const [searchParams] = useSearchParams();
-    const [isLoading, setIsLoading] = useState(false)
-    const [state, setState] = useState({
-        items: [],
-        categories: []
-    })
+    const [isLoading, setIsLoading] = useState(false);
+    const [items, setItems] = useState([]);
+    const [categories, setCategories] = useState([]);
 
-    const query = searchParams.get('search' || "")
+    const query = searchParams.get('search') || "";
+
+    const fetchItems = useCallback(() => {
+        if (query !== '' && items.length === 0) {
+            setIsLoading(true);
+            getItems(query)
+                .then((response) => {
+                    setItems(response.items);
+                    setCategories(response.categories);
+                })
+                .catch((err) => {
+                    console.error(err);
+                })
+                .finally(() => {
+                    setIsLoading(false);
+                });
+        }
+    }, [query, items.length]);
 
     useEffect(() => {
-        if (query !== '') {
-            setIsLoading(true)
-            getItems(query).then((response) => {
-                setState({
-                    ...state,
-                    items: response.items,
-                    categories: response.categories
-                })
-                setIsLoading(false)
-            }).catch((err) => {
-                console.error(err)
-                setIsLoading(false)
-            })
-
-
-        }
-    }, [query])
+        fetchItems();
+    }, [fetchItems]);
 
 
     return (
         <>
             {isLoading ?
-                <Loading />
+                    <Loading />
                 :
                 <div id='home' className='home-container'>
-                    {state.categories &&
-                        <Path categories={state.categories} />
+                    {categories &&
+                        <Path categories={categories} />
                     }
-                    {state.items &&
-                        <Cards items={state.items} />
+                    {items &&
+                        <Cards items={items} />
                     }
                 </div>
             }
-
         </>
     )
 }

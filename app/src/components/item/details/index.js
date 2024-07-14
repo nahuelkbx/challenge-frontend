@@ -31,7 +31,7 @@ function Detail() {
 
     useEffect(() => {
 
-        if (id !== '') {
+        if (id !== '' && state.title === '') {
             setIsLoading(true)
             getDetail(id).then((response) => {
                 setState({
@@ -54,7 +54,7 @@ function Detail() {
             })
         }
 
-    }, [id])
+    }, [id, state, isLoading])
 
 
     const toggleCondition = (condition) => {
