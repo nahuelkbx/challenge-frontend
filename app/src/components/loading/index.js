@@ -6,7 +6,7 @@ import './styles.scss'
 function Loading() {
     return (
         <div className='loader-container'>
-            <div class="loader"></div>
+            <div className="loader"></div>
         </div>
     )
 }

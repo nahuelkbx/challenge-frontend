@@ -24,6 +24,9 @@ class ItemService {
             axios.get(`${MELI_HOST}/items/${req.params.id}/description`)
         ])
 
+        const categories = await axios.get(`${MELI_HOST}/categories/${item.data.category_id}`)
+        console.log(categories.data)
+
 
         return {
             author: {
@@ -43,7 +46,8 @@ class ItemService {
                 free_shipping: item.data.shipping.free_shipping,
                 sold_quantity: '',
                 description: description.data.plain_text
-            }
+            },
+            categories: categories.data.path_from_root.map((category)=> ({ path: category.name}))
         }
     }
 
@@ -60,12 +64,12 @@ class ItemService {
     }
 
     static getCategories(filters) {
+
         let categories = filters.find((filter) => filter.id === 'category')
 
         let response = categories.values[0].path_from_root.map((category) => {
 
             return {
-                category: categories.values[0].name,
                 path: category.name
             }
         })

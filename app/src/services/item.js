@@ -25,7 +25,8 @@ export const getDetail = (id) => {
     return axios.get(`${BACKEND_HOST}/api/items/${id}`)
         .then((response) => {
             return {
-                detail: response.data.item
+                detail: response.data.item,
+                categories: response.data.categories
             }
 
         })

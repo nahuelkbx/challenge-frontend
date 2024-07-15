@@ -1,60 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 
 import { useParams } from 'react-router-dom';
 
 import './styles.scss'
 
-import  Loading  from '../../loading/index'
+import Loading from '../../loading/index'
+import Error from '../../error/index';
+import Path from '../../path/index'
+
 import formatPrice from '../../../utils/index'
-import { getDetail } from '../../../services/item'
+import { useFetch } from '../../../hooks/useFetch';
+import { getDetail } from '../../../services/item';
+
 
 
 function Detail() {
-    const [isLoading, setIsLoading] = useState(false)
-    const [state, setState] = useState({
-        title: "",
-        condition: "",
-        description: "",
-        picture: "",
-        sold_quantity: 0,
-        price: {
-            currency: "",
-            amount: 0,
-            decimals: 0,
-        },
+    const { id } = useParams();
+    const [item = {}, isLoading = false, error = false] = useFetch(getDetail, id);
 
-    })
+    if (isLoading) return <Loading />;
+    if (error) return <Error message={error.message} status={error.status} />;
 
 
-    let { id } = useParams()
+    const { title, condition, description, picture, price } = item.detail
+    const  categories  = item.categories
 
-
-    useEffect(() => {
-
-        if (id !== '' && state.title === '') {
-            setIsLoading(true)
-            getDetail(id).then((response) => {
-                setState({
-                    ...state,
-                    title: response.detail.title,
-                    condition: response.detail.condition,
-                    description: response.detail.description,
-                    picture: response.detail.picture,
-                    sold_quantity: response.detail.sold_quantity,
-                    price: {
-                        currency: response.detail.price.currency,
-                        amount: response.detail.price.amount,
-                        decimals: response.detail.price.decimals
-                    }
-                })
-                setIsLoading(false)
-            }).catch((error) => {
-                console.error(error)
-                setIsLoading(false)
-            })
-        }
-
-    }, [id, state, isLoading])
+    if (!title) return <Error message="Producto no encontrado" status={404} />;
 
 
     const toggleCondition = (condition) => {
@@ -67,42 +38,32 @@ function Detail() {
     }
 
     return (
-        <>
-            {isLoading ?
-                <Loading />
-                :
-                <div className='main'>
-                    {state &&
-                        <div className='container'>
-
-                            <div className='information'>
-                                <div className='thumbnail-container'>
-                                    <img alt='thumbnail' src={state.picture} />
-                                </div>
-
-                                <div className='description'>
-                                    <label className='title'>Descripción del producto</label>
-                                    <p className='paragraph'>{state.description}</p>
-                                </div>
-
-                            </div>
-
-                            <div className='detail'>
-                                <label className='condition'>{toggleCondition(state.condition)}</label>
-                                <label className='title'>{state.title}</label>
-                                <label className='price'>{formatPrice(state.price.amount, state.price.currency || 'ARS', 'es-AR')}</label>
-                                <button className='buy'>Comprar</button>
-                            </div>
-
-                        </div>
-                    }
-
+        <div className="main">
+            <Path categories={categories}/>
+            <div className="container">
+                <div className="information">
+                    <div className="thumbnail-container">
+                        <img alt={title} src={picture} />
+                    </div>
+                    <div className="description">
+                        <h2 className="title">Descripción del producto</h2>
+                        <p className="paragraph">{description}</p>
+                    </div>
                 </div>
-            }
-
-        </>
+                <div className="detail">
+                    <span className="condition">{toggleCondition(condition)}</span>
+                    <h1 className="title">{title}</h1>
+                    <span className="price">{`${formatPrice(price.amount, price.currency, 'es-AR')}`}</span>
+                    <button className="buy">Comprar</button>
+                </div>
+            </div>
+        </div>
     )
 }
 
 
 export default Detail
+
+/*
+        
+*/
