@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React from 'react'
 
 import { useParams } from 'react-router-dom';
 
@@ -63,7 +63,3 @@ function Detail() {
 
 
 export default Detail
-
-/*
-        
-*/

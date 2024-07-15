@@ -1,8 +1,8 @@
 import React from 'react'
 
-import './styles.scss'
-
 import { Link } from 'react-router-dom'
+
+import './styles.scss'
 
 import formatPrice from '../../../utils/index'
 import shipping from '../../../specs/ic_shipping@2x.png'

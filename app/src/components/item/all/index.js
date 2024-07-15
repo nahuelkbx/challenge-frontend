@@ -1,11 +1,8 @@
 import React from 'react'
 
-
 import './styles.scss'
 
 import Card from '../card'
-
-
 
 function Cards({ items }) {
   return (
