@@ -22,8 +22,8 @@ function Detail() {
     if (error) return <Error message={error.message} status={error.status} />;
 
 
-    const { title, condition, description, picture, price } = item.detail
-    const  categories  = item.categories
+    const { title, condition, description, picture, price } = item.detail || {}
+    const  categories  = item.categories || []
 
     if (!title) return <Error message="Producto no encontrado" status={404} />;
 

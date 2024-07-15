@@ -22,11 +22,15 @@ function Home() {
 
     if (isLoading) return <Loading />;
     if (error) return <Error message={error.message} status={error.status} />;
+    
 
-    const items = data.items
-    const categories = data.categories
+    const items = data.items || []
+    const categories = data.categories || []
 
-    if (!items.length) return <Error message="Productos no encontrados" status={404} />;
+
+    if (!items.length) return <Error message={`No se encontraron resultados para ${query}`} status={404} />;
+
+
 
     return (
         <>
