@@ -46,7 +46,4 @@ describe('Searchbar', () => {
         expect(mockedUsedNavigate).toHaveBeenCalledWith('/items?search=test query');
       });
 
-      afterEach(()=> {
-        cleanup()
-    })
 })

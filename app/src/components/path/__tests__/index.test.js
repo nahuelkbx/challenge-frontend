@@ -19,12 +19,10 @@ describe('Path', ()=> {
     });
 
     test('should render the correct number of childrens', ()=> {
-        const elements = screen.queryAllByText(/Foo|bar/i)
+        const elements = screen.getAllByText(/Foo|bar/i)
 
         expect(elements).toHaveLength(2)
     })
 
-    afterEach(()=> {
-        cleanup()
-    })
+
 })
