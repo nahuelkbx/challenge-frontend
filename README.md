@@ -13,14 +13,18 @@ Los requerimientos son los siguientes:
 
 ## Setup del proyecto
 
-Para poder levantar el proyecto es necesario estas variables de entorno
-
 ### Frontend
-Dentro de la carpeta /app/src es necesario crear las siguientes variables en nuestro archivo .env
+nos paramos en la carpeta app y hacemos 
+
+`npm install`
+
+en el mismo directorio es necesario que creemos un archivo .env con la siguiente variable
 
 `REACT_APP_API_URL=http://localhost:3001`
 
 parados en la carpeta /app/src correr el siguiente comando
+
+`npm run build`
 
 `npm run start`
 
