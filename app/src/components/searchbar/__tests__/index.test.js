@@ -19,9 +19,7 @@ describe('Searchbar', () => {
         );
     });
 
-    afterEach(()=> {
-        cleanup()
-    })
+
 
     test('updates input value on change', () => {
         const inputElement = screen.getByPlaceholderText('Nunca dejes de buscar');
@@ -47,4 +45,8 @@ describe('Searchbar', () => {
     
         expect(mockedUsedNavigate).toHaveBeenCalledWith('/items?search=test query');
       });
+
+      afterEach(()=> {
+        cleanup()
+    })
 })
