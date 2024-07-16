@@ -31,7 +31,7 @@ export const useFetch = (callback, args) => {
     };
 
     fetch();
-  }, [args]);
+  }, [args, callback]);
 
   return [data, isLoading, error];
 };
