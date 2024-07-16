@@ -1,11 +1,6 @@
-
-
 import axios from 'axios'
 
-
 const BACKEND_HOST = process.env.REACT_APP_API_URL;
-
-
 
 export const getItems = (query) => {
     return axios.get(`${BACKEND_HOST}/api/items?q=${query}`).then((response) => {
@@ -20,7 +15,6 @@ export const getItems = (query) => {
 
 }
 
-
 export const getDetail = (id) => {
     return axios.get(`${BACKEND_HOST}/api/items/${id}`)
         .then((response) => {
@@ -34,4 +28,3 @@ export const getDetail = (id) => {
             throw (error)
         })
 }
-

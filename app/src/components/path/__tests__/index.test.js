@@ -23,6 +23,4 @@ describe('Path', ()=> {
 
         expect(elements).toHaveLength(2)
     })
-
-
 })

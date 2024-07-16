@@ -12,8 +12,6 @@ import Error from '../error';
 import { useFetch } from '../../hooks/useFetch';
 import { getItems } from '../../services/item'
 
-
-
 function Home() {
     const [searchParams] = useSearchParams();
 
@@ -23,14 +21,10 @@ function Home() {
     if (isLoading) return <Loading />;
     if (error) return <Error message={error.message} status={error.status} />;
     
-
     const items = data.items || []
     const categories = data.categories || []
 
-
     if (!items.length) return <Error message={`No se encontraron resultados para ${query}`} status={404} />;
-
-
 
     return (
         <>

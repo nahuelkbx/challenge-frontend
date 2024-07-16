@@ -25,8 +25,6 @@ class ItemService {
         ])
 
         const categories = await axios.get(`${MELI_HOST}/categories/${item.data.category_id}`)
-        console.log(categories.data)
-
 
         return {
             author: {

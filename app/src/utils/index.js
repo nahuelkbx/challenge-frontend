@@ -1,4 +1,3 @@
-
 export default function formatPrice(price, currency, locale){
     return new Intl.NumberFormat(locale, {
         style: 'currency',

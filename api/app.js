@@ -7,8 +7,6 @@ const errorHandler = require('./middlewares/error_handler')
 const morgan = require('morgan')
 const cors = require('cors')
 
-
-
 const app = express()
 const port = process.env.PORT
 const origin = process.env.ORIGIN_URL
