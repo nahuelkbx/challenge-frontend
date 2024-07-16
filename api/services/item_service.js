@@ -65,7 +65,7 @@ class ItemService {
 
         let categories = filters.find((filter) => filter.id === 'category')
 
-        let response = categories.values[0].path_from_root.map((category) => {
+        let response = categories?.values[0].path_from_root.map((category) => {
 
             return {
                 path: category.name
@@ -85,7 +85,7 @@ class ItemService {
                     price: {
                         currency: element.currency_id,
                         amount: element.price,
-                        decimals: element.installments.amount
+                        decimals: this.getDecimals(element.price)
                     },
                     picture: element.thumbnail,
                     condition: element.condition,
